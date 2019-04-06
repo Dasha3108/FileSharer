@@ -1,0 +1,217 @@
+body {
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 62.5%;
+    text-align: left;
+    background: #eaeaea;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, form, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    width: 1023px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+    transition: opacity ease 0.5s;
+}
+
+.main {
+    padding: 0 20px 20px;
+    -webkit-transform: translateZ(0px);
+}
+
+.main .loader {
+    padding: 150px 0 150px 310px;
+    position: relative;
+}
+
+.main .loader .utext {
+    position: absolute;
+    left: 550px;
+    padding: 16px 20px;
+    line-height: 20px;
+    color: #a1a1a1;
+    font-size: 16px;
+    font-family: CalibriBold, Tahoma, Helvetica, sans-serif;
+    letter-spacing: -0.2px;
+}
+
+.main .loader .utext b {
+    color: #93acbb;
+    line-height: 34px;
+    font-size: 27px;
+    display: block;
+    margin-bottom: 14px;
+    font-weight: normal;
+    letter-spacing: -0.6px;
+}
+
+.main .loader .bg {
+    width: 180px;
+    height: 180px;
+    position: relative;
+}
+
+.main .loader .bg div {
+    display: block;
+}
+
+.main .loader .bg .arrow {
+    width: 200px;
+    height: 170px;
+    top: 10px;
+    left: -172px;
+    position: absolute;
+    background: url(../images/arrow.png) center no-repeat;
+    background-size: 100%;
+    opacity: 0.7;
+    transition: all ease 0.3s;
+}
+
+.main .loader .bg:hover .arrow {
+    opacity: 1;
+    left: -162px;
+}
+
+.city {
+    padding: 12px 0 210px;
+    background: url(../images/city.png) bottom center repeat-x #c1cbd1;
+    border-top: 1px outset #eaeaea;
+    outline: 1px solid #acacac;
+    min-height: 124px;
+    transition: all ease 0.4s;
+}
+
+#footer {
+    background: linear-gradient(to bottom, #525252 0%,#4e4e4e 7%,#636363 100%);
+}
+
+#footer .container {
+    -webkit-transform: translateZ(0px);
+    padding: 42px 228px 42px;
+    width: 567px;
+    background: transparent !important;
+    position: relative;
+    color: #dbdbdb;
+    font-size: 11px;
+    font-family: Calibri, Tahoma, Helvetica, sans-serif;
+}
+
+#footer h1 {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-align: center;
+    line-height: 25px;
+}
+
+.main .loader .bg .transfer {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 0 rgba(0,0,0,0.1), 0 10px 30px 0 rgba(0,0,0,0.2);
+    height: 25.625em;
+    left: 5em;
+    margin: -12.8125em 0 0;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1),-webkit-transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    width: 290px;
+    z-index: 30;
+}
+
+svg {
+    display: block;
+    height: 45px;
+    margin: 0 0.625em 0 1.25em;
+    position: absolute;
+    top: 20px;
+    -webkit-transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 45px;
+    cursor: pointer;
+}
+
+.main .loader .bg .transfer h2 {    display: block;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 400;
+    font-family: FreightSans Pro Medium, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", sans-serif;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    top: 30px;
+    -webkit-transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    user-select: none;
+    margin-left: 70px;
+}
+
+.add-files-caption {
+    height: 65%;
+    margin: auto;
+    width: 80%;
+}
+
+.transfer .transfer-footer {
+    border-top: 1px solid #d4d7d9;
+    padding: 0 1.25em;
+    position: relative;
+}
+
+.transfer .transfer-button {
+    left: 50%;
+    top: 45px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #409fff;
+    border: 1px solid #409fff;
+    border-radius: 1.25em;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    height: 50px;
+    outline: 0;
+    font-weight: 500;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", sans-serif;
+    -webkit-transition: border-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),background-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),color 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: border-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),background-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),color 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+    user-select: none;
+    width: 9.75em;
+}
+
+.transfer .transfer-button-inactive {
+    background: #babcbf;
+    border-color: #babcbf;
+    color: #ffffff;
+    cursor: default;
+}
+
+.main .loader .logo {
+    position: absolute;
+    left: 690px;
+    padding: 0 20px;
+    background: url(../images/file_sharing.png) center no-repeat;
+    z-index: 10;
+    height: 200px;
+    width: 200px;
+    opacity: 0.7;
+}
+
+.main .loader .logo:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
