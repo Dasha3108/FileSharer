@@ -158,7 +158,7 @@ svg {
 }
 
 .add-files-caption {
-    height: 65%;
+    height: 40%;
     margin: auto;
     width: 80%;
 }
@@ -216,6 +216,65 @@ svg {
     opacity: 1;
 }
 
-#file-upload {
+#fileUpload {
     display: none;
+}
+
+.uploaded-file-info {
+    height: 20%;
+    border-top: 1px solid #d4d7d9;
+    cursor: default;
+    outline: 0;
+    padding: 5px 10px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.uploaded-file-info-title {
+    font-weight: 400;
+    font-family: Fakt Pro Normal, "Fakt Pro Normal Cyr", "Fakt Pro Normal Grk", -apple-system, ".SFNSText-Regular",
+    "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    color: #17181a;
+    display: block;
+    font-size: 15px;
+    line-height: 1.42857em;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.uploaded-file-info-details {
+    font-weight: 400;
+    font-family: Fakt Pro Normal, "Fakt Pro Normal Cyr", "Fakt Pro Normal Grk", -apple-system, ".SFNSText-Regular",
+    "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    color: #6a6d70;
+    display: block;
+    font-size: 12px;
+    line-height: 1.16667em;
+    margin: 0;
+
+}
+
+.uploaded-file-info-detail:not(:last-child)::after {
+    content: '\00B7';
+    display: inline-block;
+    padding: 0 0.375em;
+    text-decoration: none;
+}
+
+.progress-bar-container {
+    position: absolute;
+    height: 20px;
+    background: #babcbf52;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#progressBar {
+    background: #409fff;
 }

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block content %}
     <div class="wrapper">
         <div class="container">
@@ -13,20 +12,40 @@
                     <div class="arrow"></div>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input id="file-upload" type="file" name="uploaded_file">
+                        <input id="fileUpload" type="file" name="uploaded_file" onchange="handleFileUpload(this.files)">
                         <div class="transfer">
                             <div class="add-files-caption">
-                                <label for="file-upload">
+                                <label for="fileUpload">
                                     <svg viewBox="24 0 72 72">
-                                        <path d="M60.493 72C79.883 72 96 55.882 96 36.493 96 16.118 79.882 0 60.493 0 40.118 0 24 16.118 24 36.493 24 55.883 40.118 72 60.493 72z" fill="#409fff" fill-rule="evenodd"></path><path d="M58 34h-9c-.553 0-1 .452-1 1.01v1.98c0 .567.448 1.01 1 1.01h9v9c0 .553.452 1 1.01 1h1.98c.567 0 1.01-.448 1.01-1v-9h9c.553 0 1-.452 1-1.01v-1.98c0-.567-.448-1.01-1-1.01h-9v-9c0-.553-.452-1-1.01-1h-1.98c-.567 0-1.01.448-1.01 1v9z" fill="#ffffff" fill-rule="evenodd">
+                                        <path d="M60.493 72C79.883 72 96 55.882 96 36.493 96 16.118 79.882 0 60.493 0
+                                        40.118 0 24 16.118 24 36.493 24 55.883 40.118 72 60.493 72z" fill="#409fff"
+                                              fill-rule="evenodd">
+                                        </path>
+                                        <path d="M58 34h-9c-.553 0-1 .452-1 1.01v1.98c0 .567.448 1.01 1 1.01h9v9c0
+                                        .553.452 1 1.01 1h1.98c.567 0 1.01-.448 1.01-1v-9h9c.553 0 1-.452
+                                        1-1.01v-1.98c0-.567-.448-1.01-1-1.01h-9v-9c0-.553-.452-1-1.01-1h-1.98c-.567
+                                        0-1.01.448-1.01 1v9z" fill="#ffffff" fill-rule="evenodd">
                                         </path>
                                     </svg>
                                 </label>
                                 <h2>Add your files</h2>
                             </div>
 
+
+                            <div class="progress-bar-container" id="progressBarContainer" style="visibility: hidden">
+                                <div id="progressBar"></div>
+                            </div>
+                            <div class="uploaded-file-info" id="fileInfo" style="visibility: hidden">
+                                <h6 class="uploaded-file-info-title" id="fileName"></h6>
+                                <div class="uploaded-file-info-details">
+                                    <span class="uploaded-file-info-detail" id="fileSize"></span>
+                                    <span class="uploaded-file-info-detail" id="fileType"></span>
+                                </div>
+                            </div>
+
                             <div class="transfer-footer">
-                                <button disabled type="submit" class="transfer-button transfer-button-inactive">
+                                <button disabled type="submit" id="transferButton"
+                                        class="transfer-button transfer-button-inactive">
                                     Transfer
                                 </button>
                             </div>
@@ -44,3 +63,7 @@
         </div>
     </div>
 {%  endblock content %}
+
+<script>
+
+</script>
