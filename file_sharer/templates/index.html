@@ -13,7 +13,7 @@
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <input id="fileUpload" type="file" name="uploaded_file" onchange="handleFileUpload(this.files)">
-                        <div class="transfer">
+                        <div class="transfer" id="dropBox">
                             <div class="add-files-caption">
                                 <label for="fileUpload">
                                     <svg viewBox="24 0 72 72">
@@ -62,8 +62,8 @@
         <div class="city">
         </div>
     </div>
+
+    <script>
+        addFileDragAndDrop();
+    </script>
 {%  endblock content %}
-
-<script>
-
-</script>

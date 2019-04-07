@@ -278,3 +278,7 @@ svg {
 #progressBar {
     background: #409fff;
 }
+
+.main .loader .bg .dragEnter {
+    background: #797da5;
+}
