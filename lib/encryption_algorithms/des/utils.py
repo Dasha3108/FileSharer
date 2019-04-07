@@ -96,15 +96,34 @@ def generate_sub_keys(key_string):
     return sub_keys
 
 
-def crypt(data, crypt_type, key, block_size=8):
+def add_padding_to_data(data, block_size, padding_byte=" "):
+
+    if isinstance(data, str):
+        data = data.encode("ascii")
+
+        if padding_byte is not None:
+            padding_byte = padding_byte.encode("ascii")
+
+        if len(data) % block_size == 0:
+            # No padding required.
+            return data
+
+        data += (block_size - (len(data) % block_size)) * padding_byte
+
+    return data
+
+
+def crypt(data, crypt_type, key, block_size=8, padding_byte=" "):
     """
         Main DES flow. Separates data in blocks and passes them to DES algorithm.
+    :param padding_byte: optional argument for encryption padding. Must only be one byte
     :param key: key to crypt data
     :param data: bits array to encrypt
     :param crypt_type: ENCRYPT or DECRYPT
     :param block_size: the size of data blocks
     :return: crypted data
     """
+    data = add_padding_to_data(data, block_size, padding_byte)
 
     if len(data) % block_size != 0:
         raise ValueError("Invalid data length, data must be a multiple of " + str(block_size) + " bytes\n")

@@ -1,18 +1,9 @@
-import lib.encryption_algorithms.des.utils as utils
+from lib.encryption_algorithms.des.utils import crypt, ENCRYPT, DECRYPT
 
 
 def encrypt(data, key):
-    return utils.crypt(data, utils.ENCRYPT, key)
+    return crypt(data, ENCRYPT, key)
 
 
 def decrypt(encrypted_data, key):
-    return utils.crypt(encrypted_data, utils.DECRYPT, key)
-
-
-if __name__ == "__main__":
-    data = "DES encryption algorithm".encode('ascii')
-    key = "DESCRYPT"
-
-    encrypted = encrypt(data, key)
-    print(encrypted)
-    print(decrypt(encrypted, key))
+    return crypt(encrypted_data, DECRYPT, key)
