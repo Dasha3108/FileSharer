@@ -10,9 +10,23 @@ function unblock_transfer_button() {
 function showFileInfo(file) {
     document.getElementById("progressBarContainer").style.visibility = "hidden";
     document.getElementById("fileInfo").style.visibility = "visible";
+
     document.getElementById("fileSize").innerText = formatFileSize(file.size);
     document.getElementById("fileType").innerText = file.name.split('.').pop();
-    document.getElementById("fileName").innerText = file.name;
+
+    let fileNameLink = document.getElementById("fileName");
+    fileNameLink.innerText = file.name;
+
+    console.log(file.type);
+    if (file.type.startsWith("image") ||
+        file.type.includes("html") ||
+        file.type.includes("pdf")) {
+
+        fileNameLink.href = window.URL.createObjectURL(file);
+        return
+    }
+
+    fileNameLink.removeAttribute("href");
 }
 
 function handleFileUpload(files) {
