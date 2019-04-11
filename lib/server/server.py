@@ -1,4 +1,5 @@
 import socket
+from threading import Thread
 
 
 class Server:
@@ -14,12 +15,17 @@ class Server:
     def connect_to_port(self):
         self.socket.bind((self.server_ip, self.server_port))
 
-    def listen(self):
+    def disconnect(self, connection):
+        connection.close()
 
-        self.socket.listen()
+    def listen(self, number_of_clients):
+        self.socket.listen(number_of_clients)
 
+    def connect(self):
         connection, address = self.socket.accept()
-
+        t = Thread(target=self.send_file, args=[connection, 'file.txt'])
+        t.start()
+        #return connection, address
 
     def send_file(self, connection, file_name):
 
@@ -30,3 +36,9 @@ class Server:
         # TODO: encrypt data
 
         connection.send(file_data)
+
+    def run(self, number_of_clients):
+        self.connect_to_port()
+        self.listen(number_of_clients)
+        #connection, address =
+        self.connect()

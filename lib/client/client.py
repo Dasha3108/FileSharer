@@ -20,7 +20,9 @@ class Client:
         """
             Receives the file from server and saves it to the temp file
         """
-        temp_file = utils.create_file(TEMP_FILE_NAME)
+        #file = utils.create_file(TEMP_FILE_NAME)
+
+        temp_file = open(TEMP_FILE_NAME, 'wb')
 
         encrypted_data = self.socket.recv(1024)
         self.socket.close()
@@ -49,3 +51,7 @@ class Client:
         file.write(file_data)
 
         file.close()
+
+    def run(self):
+        self.connect_to_server()
+        self.receive_file()
