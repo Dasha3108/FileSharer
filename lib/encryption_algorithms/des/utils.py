@@ -64,6 +64,7 @@ def bits_list_to_bytes(data):
 def generate_sub_keys(key_string):
     """
         Generates sub keys for Feistel function in DES
+
     :param key_string: encryption key passed as string
     :return: sub_keys for Feistel function in DES
     """
@@ -97,18 +98,26 @@ def generate_sub_keys(key_string):
 
 
 def add_padding_to_data(data, block_size, padding_byte=" "):
+    """
+        Adds the padding to data to be a multiple of block size
+
+    :param data: data to add padding to
+    :param block_size: size of the DES block
+    :param padding_byte: byte to add to data
+    :return: data with padding
+    """
 
     if isinstance(data, str):
         data = data.encode("ascii")
 
-        if padding_byte is not None:
-            padding_byte = padding_byte.encode("ascii")
+    if padding_byte is not None:
+        padding_byte = padding_byte.encode("ascii")
 
-        if len(data) % block_size == 0:
-            # No padding required.
-            return data
+    if len(data) % block_size == 0:
+        # No padding required.
+        return data
 
-        data += (block_size - (len(data) % block_size)) * padding_byte
+    data += (block_size - (len(data) % block_size)) * padding_byte
 
     return data
 
@@ -116,6 +125,7 @@ def add_padding_to_data(data, block_size, padding_byte=" "):
 def crypt(data, crypt_type, key, block_size=8, padding_byte=" "):
     """
         Main DES flow. Separates data in blocks and passes them to DES algorithm.
+
     :param padding_byte: optional argument for encryption padding. Must only be one byte
     :param key: key to crypt data
     :param data: bits array to encrypt
@@ -151,6 +161,7 @@ def crypt(data, crypt_type, key, block_size=8, padding_byte=" "):
 def des_algorithm(block, sub_keys):
     """
         Crypts block with DES algorithm
+
     :param sub_keys: keys for des iterations
     :param block: block passed for crypting
     :return: crypted block
@@ -176,6 +187,14 @@ def des_algorithm(block, sub_keys):
 
 
 def des_algorithm_iteration(left_block, right_block, iteration_key):
+    """
+        DES algorithm iteration
+
+    :param left_block: previous left block
+    :param right_block: previous right block
+    :param iteration_key: key for current iteration
+    :return: new left and right blocks
+    """
     temp_right_block = right_block[:]
 
     # Expands right bits from 32 to 64

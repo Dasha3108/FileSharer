@@ -3,6 +3,11 @@ import random
 
 
 def generate_keys():
+    """
+        Generates the public and private keys
+
+    :return: p, q, n
+    """
     prime_numbers = [i for i in range(1000, 10000) if utils.is_prime(i) and i % 4 == 3]
 
     p = random.choice(prime_numbers)
@@ -14,18 +19,36 @@ def generate_keys():
 
 
 def encrypt(data, n):
+    """
+        Encrypts the passed data with the passed public key
+
+    :param data: data to encrypt
+    :param n: the public key to encode
+    :return: encrypted data as int array
+    """
+
+    # Turn data into bytes if it was passed as string
+    if isinstance(data, str):
+        data = data.encode('ascii')
+
     encrypted_data = []
-    a = []
+
     for byte in data:
         byte_with_padding = utils.add_padding_to_byte(byte)
-        a.append(byte)
         encrypted_data.append((byte_with_padding * byte_with_padding) % n)
 
-    print(a)
     return encrypted_data
 
 
 def decrypt(encrypted_data, p, q):
+    """
+        Decrypts the data with the passed private keys
+
+    :param encrypted_data: data to decrypt
+    :param p: private key
+    :param q: private key
+    :return: decoded data as int array
+    """
     n = p * q
 
     decrypted_data = []
@@ -47,11 +70,9 @@ def decrypt(encrypted_data, p, q):
 if __name__ == "__main__":
     p, q, n = generate_keys()
 
-    with open("utils.py", "rb") as file:
+    with open("utils.py", "r") as file:
         data = file.read()
         encrypted = encrypt(data, n)
 
-        print(decrypt(encrypted, p, q))
-
-    print(p, q, n)
-
+        d = decrypt(encrypted, p, q)
+        print(utils.int_array_to_string(d))
