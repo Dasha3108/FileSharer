@@ -14,6 +14,7 @@ def main():
 
     choice = input("1- Server / 2- Peer\n")
     if choice == "1":
+        print(server.server_ip)
         server.run(NUMBER_OF_CLIENTS)
     else:
         client.run()
