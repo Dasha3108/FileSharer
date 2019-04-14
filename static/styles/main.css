@@ -82,7 +82,7 @@ body, h1, h2, h3, h4, h5, h6, p, form, fieldset {
 }
 
 .city {
-    padding: 12px 0 210px;
+    padding: 0 0 210px;
     background: url(../images/city.png) bottom center repeat-x #c1cbd1;
     border-top: 1px outset #eaeaea;
     outline: 1px solid #acacac;
@@ -96,7 +96,7 @@ body, h1, h2, h3, h4, h5, h6, p, form, fieldset {
 
 #footer .container {
     -webkit-transform: translateZ(0px);
-    padding: 42px 228px 42px;
+    padding: 54px 228px 42px;
     width: 567px;
     background: transparent !important;
     position: relative;
@@ -281,4 +281,52 @@ svg {
 
 .main .loader .bg .dragEnter {
     background: #797da5;
+}
+
+.uploaded-files-container {
+    overflow: auto;
+    width: 80%;
+    height: 335px;
+    margin: 0 10%;
+    position: absolute;
+}
+
+.uploaded-files-row {
+    height: 40%;
+    margin: 1.5% 0;
+    text-align: center;
+}
+
+.file_to_download_container {
+    width: 20%;
+    height: 100%;
+    margin: -10px 1%;
+    display: inline-block;
+    background: #eff0f1;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 0 rgba(0,0,0,0.1), 0 10px 30px 0 rgba(0,0,0,0.2);
+}
+
+.download-button {
+    margin: 15px auto;
+    display: block;
+    cursor:pointer;
+    border:none;
+    width: 85px;
+    height: 65px;
+    background: #0000;
+}
+
+.download-button .download-button-image {
+    height: 100%;
+    width: 100%;
+}
+
+.download-file-link {font-weight: 400;
+    font-family: Fakt Pro Normal, "Fakt Pro Normal Cyr", "Fakt Pro Normal Grk", -apple-system,
+    ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    color: #17181a;
+    display: block;
+    font-size: 20px;
+    margin-top: 15px;
 }

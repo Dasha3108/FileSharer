@@ -20,5 +20,6 @@ import file_sharer.views as views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home, name='home')
+    url(r'^$', views.home, name='home'),
+    url(r'^get_available_files/$', views.get_available_files, name='get_available_files')
 ]
