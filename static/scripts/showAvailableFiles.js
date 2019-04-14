@@ -13,7 +13,7 @@ function updateFilesView() {
 }
 
 function showFiles(data) {
-    const filesInARow = 4;
+    const filesInARow = 5;
 
     let filesNumber = 0;
     let currentRowDiv;
@@ -36,8 +36,9 @@ function showFiles(data) {
         fileLink.innerText = file["file_name"];
         fileLink.href = file["link"];
 
-        let download_button = document.createElement("button");
+        let download_button = document.createElement("a");
         download_button.classList.add("download-button");
+        download_button.href = file["link"];
 
         let download_button_image = document.createElement("img");
         download_button_image.classList.add("download-button-image");
