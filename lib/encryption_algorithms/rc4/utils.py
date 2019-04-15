@@ -1,9 +1,9 @@
 
-
+KEY = "Secret"
 
 class Text:
 
-    def __init__(self, data):
+    def __init__(self, data=''):
         self.data = data
 
     def text_to_bytes(self):
@@ -27,17 +27,14 @@ class Text:
 
     def bytes_to_text(self, byte_list):
 
-        data = ''
+        self.data = ''
         for byte in byte_list:
-            data += chr(byte)
-
-        return data
-
+            self.data += chr(byte)
 
     def bytes_to_hex(self, byte_list):
 
-        data = ''
+        self.data = ''
 
         for byte in byte_list:
             hex_str = '0' + hex(byte)[2:]
-            data += hex_str[-2:].upper()
+            self.data += hex_str[-2:].upper()
