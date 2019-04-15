@@ -16,6 +16,28 @@ class Client:
     def connect_to_server(self):
         self.socket.connect((self.server_ip, self.server_port))
 
+    def bind(self):
+        self.socket.bind((self.server_ip, self.server_port))
+
+    def run(self):
+        self.bind()
+        self.receive_file()
+
+    def upload_file(self, file_name):
+        self.connect_to_server()
+        #connection, address = self.socket.accept()
+        self.send_file(file_name)
+
+    def send_file(self, file_name):
+        file = open(file_name, 'rb')
+
+        file_data = file.read(1024)
+
+        # TODO: encrypt data
+
+        self.socket.send(file_data)
+        self.socket.close()
+
     def receive_file(self):
         """
             Receives the file from server and saves it to the temp file
@@ -52,6 +74,4 @@ class Client:
 
         file.close()
 
-    def run(self):
-        self.connect_to_server()
-        self.receive_file()
+
