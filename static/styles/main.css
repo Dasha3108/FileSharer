@@ -328,7 +328,10 @@ svg {
     color: #17181a;
     display: block;
     font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 15px;
+    overflow: hidden;
 }
 
 .file_to_download_container:hover .download-button-image {

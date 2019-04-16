@@ -1,6 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 import json
+from os import listdir
+from os.path import isfile, join, relpath
+
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+from django.shortcuts import render
+
+FILES_FOLDER = 'uploaded_files/'
 
 
 def home(request):
@@ -8,7 +15,8 @@ def home(request):
         return render(request, "index.html")
     my_file = request.FILES['uploaded_file']
 
-    print(type(my_file))
+    file_system = FileSystemStorage(location=FILES_FOLDER)
+    _ = file_system.save(my_file.name, my_file)
 
     return render(request, "index.html")
 
@@ -17,10 +25,17 @@ def get_available_files(request):
     if request.method != 'GET':
         return
 
-    data = [{"file_name": "asd.jpg", "link": "https:/vk.com"}, {"file_name": "lab.docx", "link": "/youtube.com"},
-            {"file_name": "asd.jpg", "link": "https:/vk.com"}, {"file_name": "lab.docx", "link": "/youtube.com"},
-            {"file_name": "asd.jpg", "link": "https:/vk.com"}, {"file_name": "lab.docx", "link": "/youtube.com"},
-            {"file_name": "asd.jpg", "link": "https:/vk.com"}, {"file_name": "lab.docx", "link": "/youtube.com"},
-            {"file_name": "asd.jpg", "link": "https:/vk.com"}, {"file_name": "lab.docx", "link": "/youtube.com"}]
+    file_system = FileSystemStorage(location=FILES_FOLDER)
+
+    location = file_system.base_location
+
+    data = []
+    for file in listdir(location):
+        file_path = join(location, file)
+        if isfile(file_path):
+            print(relpath(file, settings.MEDIA_ROOT))
+
+            data.append({"file_name": file,
+                         "link": "/media/" + file})
 
     return HttpResponse(json.dumps(data), content_type="application/json")

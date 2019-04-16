@@ -39,6 +39,7 @@ function showFiles(data) {
         let download_button = document.createElement("a");
         download_button.classList.add("download-button");
         download_button.href = file["link"];
+        download_button.target = "_blank";
 
         let download_button_image = document.createElement("img");
         download_button_image.classList.add("download-button-image");
