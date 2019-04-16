@@ -12,12 +12,12 @@ class Server:
         self.server_port = server_port
 
         self.socket = socket.socket()
+        #self.socket.setblocking(0)
+
+        self.temp_file = None
 
     def bind_to_port(self):
         self.socket.bind((self.server_ip, self.server_port))
-
-    def connect_to_port(self):
-        self.socket.connect((self.server_ip, self.server_port))
 
     def disconnect(self, connection):
         connection.close()
@@ -28,11 +28,11 @@ class Server:
     def connect(self):
         connection, address = self.socket.accept()
         data = connection.recv(1024)
-        if data != '':
+        if data != bytes(0):
             t = Thread(target=self.receive_file, args=[data])
             t.start()
         else:
-            t = Thread(target=self.send_file, args=[connection, 'file.txt'])
+            t = Thread(target=self.send_file, args=[connection])
             t.start()
         #return connection, address
 
@@ -43,11 +43,13 @@ class Server:
         #connection, address =
         self.connect()
 
-    def send_file(self, connection, file_name):
+    def send_file(self, connection):
+
+        file_name = 'file.txt'
 
         file = open(file_name, 'rb')
 
-        file_data = file.read(1024)
+        file_data = file.read()
 
         # TODO: encrypt data
 
@@ -55,7 +57,7 @@ class Server:
 
     def receive_file(self, data):
 
-        #file = utils.create_file(TEMP_FILE_NAME)
+        #temp_file = utils.create_file(TEMP_FILE_NAME)
 
         temp_file = open(TEMP_FILE_NAME, 'wb')
 
@@ -69,9 +71,11 @@ class Server:
 
         temp_file.close()
 
-        self.save_received_file('file1.txt')
+        self.save_received_file('file1')
 
     def save_received_file(self, file_name):
+
+        #file = open(file_name, 'wb')
 
         file = utils.create_file(file_name)
 

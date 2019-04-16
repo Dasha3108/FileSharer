@@ -1,6 +1,7 @@
 from socket import socket
 import lib.client.utils as utils
 from lib.client.constants import TEMP_FILE_NAME
+from threading import Thread
 
 
 class Client:
@@ -16,22 +17,32 @@ class Client:
     def connect_to_server(self):
         self.socket.connect((self.server_ip, self.server_port))
 
-    def bind(self):
+    def bind_to_port(self):
         self.socket.bind((self.server_ip, self.server_port))
+        self.socket.listen(1)
 
     def run(self):
-        self.bind()
-        self.receive_file()
+        # data = self.socket.recv(1024)
+        # self.socket.close()
+        #
+        # # self.bind_to_port()
+        # # connection, address = self.socket.accept()
+        # # data = connection.recv(15000000)
+
+        t = Thread(target=self.receive_file, args=[])
+        t.start()
+
+        self.connect_to_server()
+        self.socket.send(bytes(0))
 
     def upload_file(self, file_name):
         self.connect_to_server()
-        #connection, address = self.socket.accept()
         self.send_file(file_name)
 
     def send_file(self, file_name):
         file = open(file_name, 'rb')
 
-        file_data = file.read(1024)
+        file_data = file.read(15000000)
 
         # TODO: encrypt data
 
@@ -43,18 +54,25 @@ class Client:
             Receives the file from server and saves it to the temp file
         """
         #file = utils.create_file(TEMP_FILE_NAME)
+        print('ffff')
 
         temp_file = open(TEMP_FILE_NAME, 'wb')
 
         encrypted_data = self.socket.recv(1024)
-        self.socket.close()
 
-        # TODO: decrypt the received data
-        temp_file.write(encrypted_data)
+        while True:
+            encrypted_data = self.socket.recv(1024)
 
-        self.temp_file = temp_file
+            #self.socket.close()
 
-        temp_file.close()
+            # TODO: decrypt the received data
+            temp_file.write(encrypted_data)
+
+            self.temp_file = temp_file
+
+            temp_file.close()
+
+
 
     def save_received_file(self, file_name):
         """

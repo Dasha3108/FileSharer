@@ -1,6 +1,7 @@
 import os
 
 
+
 def create_file(file_name):
     """
         Creates the file with the passed name.
