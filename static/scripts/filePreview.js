@@ -1,4 +1,6 @@
 function unblock_transfer_button() {
+    // Unblocks transfer buttons, removes inactive class from it
+
     if(document.getElementById("fileUpload").value !== "") {
         let button = document.getElementById("transferButton");
         button.disabled = false;
@@ -8,6 +10,8 @@ function unblock_transfer_button() {
 }
 
 function showFileInfo(file) {
+    // Shows passed file info in container
+
     document.getElementById("progressBarContainer").style.visibility = "hidden";
     document.getElementById("fileInfo").style.visibility = "visible";
 
@@ -17,7 +21,6 @@ function showFileInfo(file) {
     let fileNameLink = document.getElementById("fileName");
     fileNameLink.innerText = file.name;
 
-    console.log(file.type);
     if (file.type.startsWith("image") ||
         file.type.includes("html") ||
         file.type.includes("pdf")) {
@@ -30,6 +33,9 @@ function showFileInfo(file) {
 }
 
 function handleFileUpload(files) {
+    // Gets the uploaded file, unblocks transfer button
+    // and shows its info
+
     let file = files[0];
 
     if (file === undefined) return;
@@ -39,25 +45,9 @@ function handleFileUpload(files) {
     showFileInfo(file);
 }
 
-function showUploadProgress(file) {
-    document.getElementById("progressBarContainer").style.visibility = "visible";
-
-    var formdata = new FormData();
-    formdata.append("file1", file);
-    let ajax = new XMLHttpRequest();
-    ajax.upload.addEventListener("progress", progressHandler, false);
-
-    ajax.send(formdata);
-}
-
-
-function progressHandler(event) {
-    let elem = document.getElementById("progressBar");
-    let percent = (event.loaded / event.total) * 100;
-    elem.style.width = Math.round(percent) + '%';
-}
-
 function formatFileSize(bytes) {
+    // Returns human readable file size
+
     let thresh = 1000;
 
     if(Math.abs(bytes) < thresh) {
