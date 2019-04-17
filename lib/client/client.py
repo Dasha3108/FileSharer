@@ -48,8 +48,6 @@ class Client:
 
         file_data = file.read()
 
-        # TODO: encrypt data
-
         self.socket.send(file_data)
         self.socket.close()
 
@@ -63,7 +61,6 @@ class Client:
 
         self.socket.close()
 
-        # TODO: decrypt the received data
         temp_file.write(encrypted_data)
 
         self.temp_file = temp_file
