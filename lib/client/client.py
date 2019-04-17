@@ -32,12 +32,11 @@ class Client:
 
         #self.receive_file()
         #
+        t = Thread(target=self.receive_file, args=[])
+        t.start()
 
         self.connect_to_server()
         self.socket.send(bytes(0))
-
-        t = Thread(target=self.receive_file, args=[])
-        t.start()
 
 
     def upload_file(self, file_name):
@@ -58,11 +57,6 @@ class Client:
         """
             Receives the file from server and saves it to the temp file
         """
-        #file = utils.create_file(TEMP_FILE_NAME)
-        print('ffff')
-
-        #self.connect_to_server()
-
         temp_file = open(TEMP_FILE_NAME, 'wb')
 
         encrypted_data = self.socket.recv(1024)
@@ -76,19 +70,7 @@ class Client:
 
         temp_file.close()
 
-        # while True:
-        #     print('ffff')
-        #     encrypted_data = self.socket.recv(1024)
-        #
-        #     #self.socket.close()
-        #
-        #     # TODO: decrypt the received data
-        #     temp_file.write(encrypted_data)
-        #
-        #     self.temp_file = temp_file
-        #
-        #     temp_file.close()
-
+        self.save_received_file("file1")
 
 
     def save_received_file(self, file_name):

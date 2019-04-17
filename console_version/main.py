@@ -22,10 +22,7 @@ def main():
             file_name = input("Input name of file\n")
             client.upload_file(file_name)
         else:
-            # nclient = Client(server_ip, server_port)
-            # nclient.connect_to_server()
             client.run()
-            # nclient.receive_file()
 
 
 if __name__ == "__main__":
