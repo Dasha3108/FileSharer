@@ -12,7 +12,6 @@ class Server:
         self.server_port = server_port
 
         self.socket = socket.socket()
-        #self.socket.setblocking(0)
 
         self.temp_file = None
 
@@ -34,13 +33,11 @@ class Server:
         else:
             t = Thread(target=self.send_file, args=[connection])
             t.start()
-        #return connection, address
 
 
     def run(self, number_of_clients):
         self.bind_to_port()
         self.listen(number_of_clients)
-        #connection, address =
         self.connect()
 
     def send_file(self, connection):
@@ -51,20 +48,15 @@ class Server:
 
         file_data = file.read()
 
-        # TODO: encrypt data
-
         connection.send(file_data)
 
     def receive_file(self, data):
 
-        #temp_file = utils.create_file(TEMP_FILE_NAME)
-
         temp_file = open(TEMP_FILE_NAME, 'wb')
 
-        encrypted_data = data   #self.socket.recv(1024)
+        encrypted_data = data
         self.socket.close()
 
-        # TODO: decrypt the received data
         temp_file.write(encrypted_data)
 
         self.temp_file = temp_file
@@ -74,9 +66,6 @@ class Server:
         self.save_received_file('file1')
 
     def save_received_file(self, file_name):
-
-        #file = open(file_name, 'wb')
-
         file = utils.create_file(file_name)
 
         if self.temp_file is None:

@@ -33,32 +33,31 @@ def decrypt(data, key):
     return key_stream, decrypted.data
 
 
-def crypt(PlainBytes, KeyBytes):
+def crypt(plain_bytes, key_bytes):
+    keystream_list = []
+    cipher_list = []
 
-    keystreamList = []
-    cipherList = []
-
-    keyLen = len(KeyBytes)
-    plainLen = len(PlainBytes)
+    key_len = len(key_bytes)
+    plain_len = len(plain_bytes)
     S = list(range(256))
 
     j = 0
     for i in range(256):
-        j = (j + S[i] + KeyBytes[i % keyLen]) % 256
+        j = (j + S[i] + key_bytes[i % key_len]) % 256
 
         S[i], S[j] = S[j], S[i]
 
     i = 0
     j = 0
-    for m in range(plainLen):
+    for m in range(plain_len):
         i = (i + 1) % 256
         j = (j + S[i]) % 256
         S[i], S[j] = S[j], S[i]
         k = S[(S[i] + S[j]) % 256]
-        keystreamList.append(k)
-        cipherList.append(k ^ PlainBytes[m])
+        keystream_list.append(k)
+        cipher_list.append(k ^ plain_bytes[m])
 
-    return keystreamList, cipherList
+    return keystream_list, cipher_list
 
 
 def main():
@@ -66,13 +65,9 @@ def main():
     with open("utils.py", "r") as file:
         data = file.read()
 
-        #print(data)
-
         plain_text = Text(data)
         key = Text(KEY)
         key_stream, encrypted_data = encrypt(plain_text, key)
-
-        #print(encrypted_data)
 
         encrypted_text = Text(encrypted_data)
         key = Text(KEY)
