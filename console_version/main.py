@@ -2,7 +2,7 @@ from lib.client.client import Client
 from lib.server.server import Server
 
 SERVER_PORT = 8082
-NUMBER_OF_CLIENTS = 1
+NUMBER_OF_CLIENTS = 5
 
 def main():
     server_port = SERVER_PORT
@@ -22,7 +22,10 @@ def main():
             file_name = input("Input name of file\n")
             client.upload_file(file_name)
         else:
+            # nclient = Client(server_ip, server_port)
+            # nclient.connect_to_server()
             client.run()
+            # nclient.receive_file()
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ class Client:
         self.temp_file = None
 
         self.socket = socket()
+        #self.socket.setblocking(0)
 
     def connect_to_server(self):
         self.socket.connect((self.server_ip, self.server_port))
@@ -29,11 +30,15 @@ class Client:
         # # connection, address = self.socket.accept()
         # # data = connection.recv(15000000)
 
-        t = Thread(target=self.receive_file, args=[])
-        t.start()
+        #self.receive_file()
+        #
 
         self.connect_to_server()
         self.socket.send(bytes(0))
+
+        t = Thread(target=self.receive_file, args=[])
+        t.start()
+
 
     def upload_file(self, file_name):
         self.connect_to_server()
@@ -42,7 +47,7 @@ class Client:
     def send_file(self, file_name):
         file = open(file_name, 'rb')
 
-        file_data = file.read(15000000)
+        file_data = file.read()
 
         # TODO: encrypt data
 
@@ -56,21 +61,33 @@ class Client:
         #file = utils.create_file(TEMP_FILE_NAME)
         print('ffff')
 
+        #self.connect_to_server()
+
         temp_file = open(TEMP_FILE_NAME, 'wb')
 
         encrypted_data = self.socket.recv(1024)
 
-        while True:
-            encrypted_data = self.socket.recv(1024)
+        self.socket.close()
 
-            #self.socket.close()
+        # TODO: decrypt the received data
+        temp_file.write(encrypted_data)
 
-            # TODO: decrypt the received data
-            temp_file.write(encrypted_data)
+        self.temp_file = temp_file
 
-            self.temp_file = temp_file
+        temp_file.close()
 
-            temp_file.close()
+        # while True:
+        #     print('ffff')
+        #     encrypted_data = self.socket.recv(1024)
+        #
+        #     #self.socket.close()
+        #
+        #     # TODO: decrypt the received data
+        #     temp_file.write(encrypted_data)
+        #
+        #     self.temp_file = temp_file
+        #
+        #     temp_file.close()
 
 
 
