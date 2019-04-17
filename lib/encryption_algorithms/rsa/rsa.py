@@ -101,7 +101,7 @@ def decrypt(data, d, n):
 
 def main():
 
-    with open("file.txt", "r") as file:
+    with open("uu.py", "r") as file:
 
         data = file.read()
 
