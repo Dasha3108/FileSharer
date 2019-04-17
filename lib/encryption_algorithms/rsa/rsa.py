@@ -1,6 +1,4 @@
-from lib.encryption_algorithms.rc4.utils  import Text, KEY
 import random
-from collections import namedtuple
 
 
 def get_primes(start, stop):
@@ -112,8 +110,6 @@ def main():
         print (n, ' ', e, ' ', d)
 
         encrypted_data = encrypt(data, e, n)
-
-        #print(encrypted_data)
 
         decrypted_data = decrypt(encrypted_data, d, n)
         print(decrypted_data)

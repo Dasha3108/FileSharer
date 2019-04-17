@@ -34,7 +34,6 @@ def decrypt(data, key):
 
 
 def crypt(plain_bytes, key_bytes):
-
     keystream_list = []
     cipher_list = []
 
@@ -66,13 +65,9 @@ def main():
     with open("utils.py", "r") as file:
         data = file.read()
 
-        #print(data)
-
         plain_text = Text(data)
         key = Text(KEY)
         key_stream, encrypted_data = encrypt(plain_text, key)
-
-        #print(encrypted_data)
 
         encrypted_text = Text(encrypted_data)
         key = Text(KEY)

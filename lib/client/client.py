@@ -13,7 +13,6 @@ class Client:
         self.temp_file = None
 
         self.socket = socket()
-        #self.socket.setblocking(0)
 
     def connect_to_server(self):
         self.socket.connect((self.server_ip, self.server_port))
@@ -23,15 +22,6 @@ class Client:
         self.socket.listen(1)
 
     def run(self):
-        # data = self.socket.recv(1024)
-        # self.socket.close()
-        #
-        # # self.bind_to_port()
-        # # connection, address = self.socket.accept()
-        # # data = connection.recv(15000000)
-
-        #self.receive_file()
-        #
         t = Thread(target=self.receive_file, args=[])
         t.start()
 
