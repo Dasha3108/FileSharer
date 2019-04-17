@@ -17,7 +17,12 @@ def main():
         print(server.server_ip)
         server.run(NUMBER_OF_CLIENTS)
     else:
-        client.run()
+        choice_of_client = input("1- Upload / 2- Download\n")
+        if choice_of_client == "1":
+            file_name = input("Input name of file\n")
+            client.upload_file(file_name)
+        else:
+            client.run()
 
 
 if __name__ == "__main__":
