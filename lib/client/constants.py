@@ -1,1 +1,1 @@
-TEMP_FILE_NAME = '.temp_downloaded_file'  # The name with which the temp file will be saved
+TEMP_FILE_NAME = '.temp_downloaded_file.txt'  # The name with which the temp file will be saved

@@ -1,0 +1,351 @@
+body {
+    font-family: Tahoma, Helvetica, sans-serif;
+    font-size: 62.5%;
+    text-align: left;
+    background: #eaeaea;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, form, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    width: 1023px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+    transition: opacity ease 0.5s;
+}
+
+.main {
+    padding: 0 20px 20px;
+    -webkit-transform: translateZ(0px);
+}
+
+.main .loader {
+    padding: 125px 0 125px 310px;
+    position: relative;
+}
+
+.main .loader .utext {
+    position: absolute;
+    left: 550px;
+    padding: 16px 20px;
+    line-height: 20px;
+    color: #a1a1a1;
+    font-size: 16px;
+    font-family: CalibriBold, Tahoma, Helvetica, sans-serif;
+    letter-spacing: -0.2px;
+}
+
+.main .loader .utext b {
+    color: #93acbb;
+    line-height: 34px;
+    font-size: 27px;
+    display: block;
+    margin-bottom: 14px;
+    font-weight: normal;
+    letter-spacing: -0.6px;
+}
+
+.main .loader .bg {
+    width: 180px;
+    height: 180px;
+    position: relative;
+}
+
+.main .loader .bg div {
+    display: block;
+}
+
+.main .loader .bg .arrow {
+    width: 200px;
+    height: 170px;
+    top: 10px;
+    left: -172px;
+    position: absolute;
+    background: url(../images/arrow.png) center no-repeat;
+    background-size: 100%;
+    opacity: 0.7;
+    transition: all ease 0.3s;
+}
+
+.main .loader .bg:hover .arrow {
+    opacity: 1;
+    left: -162px;
+}
+
+.city {
+    padding: 0 0 316px;
+    background: url(../images/city.png) bottom center repeat-x #c1cbd1;
+    border-top: 1px outset #eaeaea;
+    outline: 1px solid #acacac;
+    min-height: 124px;
+    transition: all ease 0.4s;
+}
+
+#footer {
+    background: linear-gradient(to bottom, #525252 0%,#4e4e4e 7%,#636363 100%);
+}
+
+#footer .container {
+    -webkit-transform: translateZ(0px);
+    padding: 20px 228px;
+    width: 567px;
+    background: transparent !important;
+    position: relative;
+    color: #dbdbdb;
+    font-size: 11px;
+    font-family: Calibri, Tahoma, Helvetica, sans-serif;
+}
+
+#footer h1 {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-align: center;
+    line-height: 25px;
+}
+
+.main .loader .bg .transfer {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 0 rgba(0,0,0,0.1), 0 10px 30px 0 rgba(0,0,0,0.2);
+    height: 25.625em;
+    left: 5em;
+    margin: -12.8125em 0 0;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1),-webkit-transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    width: 290px;
+    z-index: 30;
+}
+
+svg {
+    display: block;
+    height: 45px;
+    margin: 0 0.625em 0 1.25em;
+    position: absolute;
+    top: 20px;
+    -webkit-transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 45px;
+    cursor: pointer;
+}
+
+.main .loader .bg .transfer h2 {    display: block;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 400;
+    font-family: FreightSans Pro Medium, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", sans-serif;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    top: 30px;
+    -webkit-transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    user-select: none;
+    margin-left: 70px;
+}
+
+.add-files-caption {
+    height: 40%;
+    margin: auto;
+    width: 80%;
+}
+
+.transfer .transfer-footer {
+    border-top: 1px solid #d4d7d9;
+    padding: 0 1.25em;
+    position: relative;
+}
+
+.transfer .transfer-button {
+    left: 50%;
+    top: 45px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #409fff;
+    border: 1px solid #409fff;
+    border-radius: 1.25em;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    height: 50px;
+    outline: 0;
+    font-weight: 500;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", sans-serif;
+    -webkit-transition: border-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),background-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),color 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: border-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),background-color 0.2s cubic-bezier(0.77, 0, 0.175, 1),color 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+    user-select: none;
+    width: 9.75em;
+}
+
+.transfer .transfer-button-inactive {
+    background: #babcbf;
+    border-color: #babcbf;
+    color: #ffffff;
+    cursor: default;
+}
+
+.main .loader .logo {
+    position: absolute;
+    left: 690px;
+    padding: 0 20px;
+    background: url(../images/file_sharing.png) center no-repeat;
+    z-index: 10;
+    height: 200px;
+    width: 200px;
+    opacity: 0.7;
+}
+
+.main .loader .logo:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+#fileUpload {
+    display: none;
+}
+
+.uploaded-file-info {
+    height: 20%;
+    border-top: 1px solid #d4d7d9;
+    cursor: default;
+    outline: 0;
+    padding: 5px 10px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.uploaded-file-info-title {
+    font-weight: 400;
+    font-family: Fakt Pro Normal, "Fakt Pro Normal Cyr", "Fakt Pro Normal Grk", -apple-system, ".SFNSText-Regular",
+    "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    color: #17181a;
+    display: block;
+    font-size: 15px;
+    line-height: 1.42857em;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.uploaded-file-info-details {
+    font-weight: 400;
+    font-family: Fakt Pro Normal, "Fakt Pro Normal Cyr", "Fakt Pro Normal Grk", -apple-system, ".SFNSText-Regular",
+    "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    color: #6a6d70;
+    display: block;
+    font-size: 12px;
+    line-height: 1.16667em;
+    margin: 0;
+
+}
+
+.uploaded-file-info-detail:not(:last-child)::after {
+    content: '\00B7';
+    display: inline-block;
+    padding: 0 0.375em;
+    text-decoration: none;
+}
+
+.progress-bar-container {
+    position: absolute;
+    height: 20px;
+    background: #babcbf52;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#progressBar {
+    background: #409fff;
+}
+
+.main .loader .bg .dragEnter {
+    background: #797da5;
+}
+
+.uploaded-files-container {
+    overflow: auto;
+    width: 80%;
+    height: 440px;
+    margin: 0 10%;
+    position: absolute;
+}
+
+.uploaded-files-row {
+    height: 35%;
+    margin: 1.5% 0;
+    text-align: center;
+}
+
+.file_to_download_container {
+    width: 17%;
+    height: 100%;
+    margin: -10px 1%;
+    display: inline-block;
+    background: #eff0f1;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 0 rgba(0,0,0,0.1), 0 10px 30px 0 rgba(0,0,0,0.2);
+}
+
+.download-button {
+    margin: 15px auto;
+    display: block;
+    cursor:pointer;
+    border:none;
+    width: 85px;
+    height: 65px;
+    background: #0000;
+}
+
+.download-button .download-button-image {
+    height: 100%;
+    width: 100%;
+}
+
+.download-file-link {font-weight: 400;
+    font-family: Fakt Pro Normal, "Fakt Pro Normal Cyr", "Fakt Pro Normal Grk", -apple-system,
+    ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    color: #17181a;
+    display: block;
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.file_to_download_container:hover .download-button-image {
+	animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40%, 80% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+}
